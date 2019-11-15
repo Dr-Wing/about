@@ -1,0 +1,36 @@
+{
+  "name": "about-microservice",
+  "version": "1.0.0",
+  "description": "about component clone of Robinhood stock page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dr-Wing/about-microservice.git"
+  },
+  "author": "Roman Emmons",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dr-Wing/about-microservice/issues"
+  },
+  "homepage": "https://github.com/Dr-Wing/about-microservice#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.19.0",
+    "mongoose": "^5.7.10",
+    "nodemon": "^1.19.4",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "webpack": "^2.1.0-beta.22",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {}
+}
