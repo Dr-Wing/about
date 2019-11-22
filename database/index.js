@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/about', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/about', {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -9,9 +12,12 @@ db.once('open', () => {
 });
 
 const aboutSchema = mongoose.Schema({
-  ticker: { type: String, unique: true, required: true, dropDups: true },
+  ticker: { type: String, unique: true, required: true },
   about: String,
   CEO: String,
+  open: Number,
+  high: Number,
+  low: Number,
   marketCap: Number,
   yearHigh: Number,
   employees: Number,
@@ -26,4 +32,16 @@ const aboutSchema = mongoose.Schema({
 
 const About = mongoose.model('About', aboutSchema);
 
-module.exports = { About };
+// retrieves data about stock based on ticker
+const getAbout = (queryString, callback) => {
+  About.findOne({ ticker: queryString })
+    .lean()
+    .then(result => {
+      callback(null, result);
+    })
+    .catch(err => {
+      throw new Error('Err: ', err);
+    });
+};
+
+module.exports = { About, getAbout };
