@@ -1,28 +1,58 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Table from "./components/table.jsx";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stuff: ""
+      data: {
+        ticker: "",
+        about: "",
+        CEO: "",
+        open: 0,
+        high: 0,
+        low: 0,
+        marketCap: 0,
+        yearHigh: 0,
+        employees: 0,
+        priceEarnings: 0,
+        yearLow: 0,
+        headquarters: "",
+        dividendYield: "",
+        founded: 0,
+        averageVolume: 0,
+        volume: 0
+      }
     };
   }
 
   componentDidMount() {
-    fetch("/about/HIJ", {
+    // https://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
+    fetch("/about/RSTU", {
       method: "GET"
     })
-      // .then(result => {
-      //   return result.json();
-      // })
+      .then(result => {
+        return result.json();
+      })
       .then(data => {
-        console.log("data from get request:", data);
+        console.log("result from get request:", data);
+        this.setState({ data });
       });
   }
 
   render() {
-    return <div>Hey hey</div>;
+    return (
+      <div>
+        <div>
+          <h1>About {this.state.data.ticker}</h1>
+        </div>
+        <div>
+          <p>{this.state.data.about}</p>
+        </div>
+        <Table about={this.state.data} />
+      </div>
+    );
   }
 }
 
