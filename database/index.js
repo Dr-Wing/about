@@ -24,7 +24,7 @@ const aboutSchema = mongoose.Schema({
   priceEarnings: Number,
   yearLow: Number,
   headquarters: String,
-  dividendYeild: String,
+  dividendYield: Number,
   founded: Number,
   averageVolume: Number,
   volume: Number
