@@ -3,7 +3,6 @@ const { About } = require('../database/index.js');
 const faker = require('faker');
 
 const save = () => {
-  //let collArr = [];
   for (let i = 0; i < tickers.length; i++) {
     let stock = new About({
       ticker: tickers[i],
@@ -25,9 +24,10 @@ const save = () => {
     });
     stock.save((err, result) => {
       if (err) {
-        throw new Error('Err: ', err);
+        console.log('err:', err);
+        //throw new Error('Err: ', err);
       } else {
-        //console.log('success:', result);
+        console.log('success!');
       }
     });
   }
