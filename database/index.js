@@ -40,7 +40,7 @@ const getAbout = (queryString, callback) => {
       callback(null, result);
     })
     .catch(err => {
-      throw new Error('Err: ', err);
+      console.log('err:', err);
     });
 };
 
