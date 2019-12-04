@@ -39,6 +39,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "accounting": "^0.4.1",
     "faker": "^4.1.0"
   }
 }

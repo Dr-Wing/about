@@ -18,7 +18,7 @@ const aboutSchema = mongoose.Schema({
   open: Number,
   high: Number,
   low: Number,
-  marketCap: Number,
+  marketCap: String,
   yearHigh: Number,
   employees: Number,
   priceEarnings: Number,
@@ -26,8 +26,8 @@ const aboutSchema = mongoose.Schema({
   headquarters: String,
   dividendYield: Number,
   founded: Number,
-  averageVolume: Number,
-  volume: Number
+  averageVolume: String,
+  volume: String
 });
 
 const About = mongoose.model('About', aboutSchema);

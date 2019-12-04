@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Table from "./components/table.jsx";
+import About from "./components/about.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class App extends React.Component {
           <h1>About {this.state.data.ticker}</h1>
         </div>
         <div>
-          <p>{this.state.data.about}</p>
+          <About about={this.state.data.about} />
         </div>
         <Table about={this.state.data} />
       </div>
