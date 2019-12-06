@@ -17,7 +17,7 @@ app.get('/about/:ticker', (req, res) => {
       console.log('err:', err);
     } else {
       console.log('result from db query:', result);
-      res.send(result);
+      res.json(result);
     }
   });
 });

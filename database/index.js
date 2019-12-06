@@ -18,16 +18,16 @@ const aboutSchema = mongoose.Schema({
   open: Number,
   high: Number,
   low: Number,
-  marketCap: Number,
+  marketCap: String,
   yearHigh: Number,
   employees: Number,
   priceEarnings: Number,
   yearLow: Number,
   headquarters: String,
-  dividendYeild: String,
+  dividendYield: Number,
   founded: Number,
-  averageVolume: Number,
-  volume: Number
+  averageVolume: String,
+  volume: String
 });
 
 const About = mongoose.model('About', aboutSchema);
@@ -40,7 +40,7 @@ const getAbout = (queryString, callback) => {
       callback(null, result);
     })
     .catch(err => {
-      throw new Error('Err: ', err);
+      console.log('err:', err);
     });
 };
 

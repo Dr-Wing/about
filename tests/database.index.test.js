@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const dbHandler = require("./db-handler");
-const { About, getAbout } = require("../database/index.js");
+const { About } = require("../database/index.js");
 const { save } = require("../seeds/seed.js");
-const faker = require("faker");
 
 /**
  * Connect to a new in-memory database before running any tests.
