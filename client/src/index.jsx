@@ -51,7 +51,7 @@ class App extends React.Component {
         <div>
           <About about={this.state.data.about} />
         </div>
-        <Table about={this.state.data} />
+        <Table data={this.state.data} />
       </div>
     );
   }

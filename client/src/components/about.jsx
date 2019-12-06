@@ -14,10 +14,8 @@ class About extends React.Component {
   shortenAbout(string) {
     let shortenedSummary = "";
     let sentenceArr = string.split(".");
-    for (let i = 0; i < sentenceArr.length; i++) {
-      if (i < 6) {
-        shortenedSummary += sentenceArr[i];
-      }
+    for (let i = 0; i < 6; i++) {
+      shortenedSummary += sentenceArr[i];
     }
     return shortenedSummary;
   }
