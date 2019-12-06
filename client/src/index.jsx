@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Table from "./components/table.jsx";
-import About from "./components/about.jsx";
+import CompanyFundamentals from "./components/companyFundamentals.jsx";
+import CompanyDescription from "./components/companyDescription.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -49,9 +49,9 @@ class App extends React.Component {
           <h1>About {this.state.data.ticker}</h1>
         </div>
         <div>
-          <About about={this.state.data.about} />
+          <CompanyDescription about={this.state.data.about} />
         </div>
-        <Table data={this.state.data} />
+        <CompanyFundamentals data={this.state.data} />
       </div>
     );
   }
