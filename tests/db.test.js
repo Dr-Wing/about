@@ -80,7 +80,3 @@ describe("Seed script ", () => {
     });
   });
 });
-
-/**
- * Complete product example.
- */

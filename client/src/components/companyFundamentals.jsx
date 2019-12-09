@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-class Table extends React.Component {
+class CompanyFundamentals extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -83,4 +83,4 @@ class Table extends React.Component {
   }
 }
 
-export default Table;
+export default CompanyFundamentals;

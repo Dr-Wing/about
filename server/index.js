@@ -28,6 +28,8 @@ app.get('/', (req, res) => {
 
 const port = 3333;
 
-app.listen(port, function() {
+let server = app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
+
+module.exports = { app, server };
