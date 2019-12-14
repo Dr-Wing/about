@@ -2,13 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CompanyFundamentals from "./components/companyFundamentals.jsx";
 import CompanyDescription from "./components/companyDescription.jsx";
+import config from "../../env.config.js";
 
-class App extends React.Component {
+class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: {
-        ticker: "",
+        ticker: "ABCD",
         about: "",
         CEO: "",
         open: 0,
@@ -30,9 +31,13 @@ class App extends React.Component {
 
   componentDidMount() {
     // https://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
-    fetch("/about/RSTU", {
-      method: "GET"
-    })
+    const ticker = this.state.data.ticker;
+    fetch(
+      `${config.SERVICE_API_URL}:${config.SERVICE_API_PORT}/about/${ticker}`,
+      {
+        method: "GET"
+      }
+    )
       .then(result => {
         return result.json();
       })
@@ -57,4 +62,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<About />, document.getElementById("about"));
