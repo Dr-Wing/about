@@ -2,7 +2,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const { getAbout } = require('../database/index.js');
+const config = require('../env.config.js');
+const cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -26,7 +29,7 @@ app.get('/', (req, res) => {
   res.send('hello world');
 });
 
-const port = 3333;
+const port = config.PORT;
 
 let server = app.listen(port, function() {
   console.log(`listening on port ${port}`);

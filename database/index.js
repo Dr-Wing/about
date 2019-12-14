@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
+const config = require('../env.config.js');
 
-mongoose.connect('mongodb://localhost/about', {
-  useUnifiedTopology: true,
-  useNewUrlParser: true
-});
+mongoose.connect(
+  `${config.DATABASE_URL}:${config.DATABASE_PORT}/${config.DATABASE_NAME}`,
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  }
+);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
