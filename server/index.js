@@ -3,7 +3,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const { getAbout } = require('../database/index.js');
 const config = require('../env.config.js');
+const cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
