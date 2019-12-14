@@ -63,3 +63,5 @@ class About extends React.Component {
 }
 
 ReactDOM.render(<About />, document.getElementById("about"));
+
+export default About;

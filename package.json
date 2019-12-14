@@ -10,7 +10,18 @@
     "server-dev": "nodemon server/index.js"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/jest.setup.js"
+    ],
+    "clearMocks": true,
+    "collectCoverageFrom": [
+      "client/src/**/*.{js,jsx}"
+    ],
+    "coverageDirectory": "coverage",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "repository": {
     "type": "git",
@@ -29,6 +40,8 @@
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "express": "^4.17.1",
     "jest": "^24.9.0",
     "mongodb-memory-server": "^6.0.1",
