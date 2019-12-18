@@ -55,17 +55,17 @@ class CompanyFundamentals extends React.Component {
     return (
       <table>
         <thead></thead>
-        <tbody>
+        <tbody className="table">
           {this.state.store ? (
             // map rows
             this.state.store.map((row, i) => {
               return (
-                <tr key={i}>
+                <tr className="row" key={i}>
                   {// map cells
                   row.map((cell, j) => {
                     return (
-                      <td key={j}>
-                        {cell.label}
+                      <td className="cell" key={j}>
+                        <span className="bold">{cell.label}</span>
                         <br></br>
                         {cell.value}
                       </td>
