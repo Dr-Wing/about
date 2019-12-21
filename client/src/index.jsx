@@ -33,7 +33,8 @@ class About extends React.Component {
     // https://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
     const ticker = this.state.data.ticker;
     fetch(
-      `${config.SERVICE_API_URL}:${config.SERVICE_API_PORT}/about/${ticker}`,
+      // `${config.SERVICE_API_URL}:${config.SERVICE_API_PORT}/about/${ticker}`,
+      `/about/ABCD`,
       {
         method: "GET"
       }

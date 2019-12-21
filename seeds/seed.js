@@ -1,22 +1,29 @@
-const { tickers } = require('./tickerCreator.js');
-const { About } = require('../database/index.js');
-const faker = require('faker');
-var accounting = require('accounting');
+const { tickers } = require("./tickerCreator.js");
+const { About, mongoose } = require("../database/index.js");
+const faker = require("faker");
 
 const nFormatter = num => {
   if (num >= 1000000000) {
-    return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'T';
+    return (num / 1000000000).toFixed(1).replace(/\.0$/, "") + "T";
   }
   if (num >= 1000000) {
-    return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
   }
   if (num >= 1000) {
-    return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+    return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K";
   }
   return num;
 };
 
 const save = () => {
+  About.deleteMany({}, (err, result) => {
+    if (err) {
+      console.log("err clearing db:", err);
+    } else {
+      console.log("successfully cleared db");
+    }
+  });
+  let collectionArr = [];
   for (let i = 0; i < tickers.length; i++) {
     let stock = new About({
       ticker: tickers[i],
@@ -40,15 +47,16 @@ const save = () => {
       ),
       volume: nFormatter(faker.random.number({ min: 10000000, max: 30000000 }))
     });
-    stock.save((err, result) => {
-      if (err) {
-        console.log('err:', err);
-        //throw new Error('Err: ', err);
-      } else {
-        console.log('success!');
-      }
-    });
+    collectionArr.push(stock);
   }
+  About.insertMany(collectionArr)
+    .then(result => {
+      console.log("successfully stored in db");
+      mongoose.disconnect();
+    })
+    .catch(err => {
+      console.log("err:", err);
+    });
 };
 
 module.exports = { save };
