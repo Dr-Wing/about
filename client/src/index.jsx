@@ -33,7 +33,8 @@ class About extends React.Component {
     // https://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
     const ticker = this.state.data.ticker;
     fetch(
-      `${config.SERVICE_API_URL}:${config.SERVICE_API_PORT}/about/${ticker}`,
+      // `${config.SERVICE_API_URL}:${config.SERVICE_API_PORT}/about/${ticker}`,
+      `/about/ABCD`,
       {
         method: "GET"
       }
@@ -49,10 +50,8 @@ class About extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>About {this.state.data.ticker}</h1>
-        </div>
+      <div className="aboutDiv">
+        <h1 className="banner">About {this.state.data.ticker}</h1>
         <div>
           <CompanyDescription about={this.state.data.about} />
         </div>

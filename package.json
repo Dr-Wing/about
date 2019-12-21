@@ -4,6 +4,7 @@
   "description": "about component clone of Robinhood stock page",
   "main": "index.js",
   "scripts": {
+    "start": "node server/index.js",
     "seed": "node ./seeds/runSeed.js",
     "test": "jest --detectOpenHandles --runInBand ./test",
     "react-dev": "webpack -d --watch",

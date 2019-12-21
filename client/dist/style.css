@@ -1,0 +1,43 @@
+body {
+  background-color: #171718;
+  color: #ffffff;
+  height: 700px;
+  width: 440px;
+  margin: 0px 0px 60px;
+  font: "DIN pro";
+}
+
+.abridge {
+  color: #21ce99;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.cell {
+  font-size: 13px;
+}
+
+.row {
+  width: 700px;
+}
+
+.description {
+  font-size: 16px;
+  /* height: 88px;
+  width: 570px;
+  margin: 0px 0px 24px; */
+}
+
+.table {
+  /* height: 218px;
+  width: 700px;
+  padding: 18px 0px 0px; */
+}
+
+.banner {
+  font-size: 26px;
+  border-bottom: 2px solid black;
+  /* padding: 0px 0px 16px; */
+}
