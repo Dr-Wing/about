@@ -16,9 +16,9 @@ class CompanyDescription extends React.Component {
     let shortenedSummary = "";
     let sentenceArr = string.split(".");
     for (let i = 0; i < 6; i++) {
-      shortenedSummary += sentenceArr[i];
+      shortenedSummary += sentenceArr[i] += ".";
     }
-    return (shortenedSummary += ".");
+    return shortenedSummary;
   }
   componentDidUpdate(previousProps, previousState) {
     if (previousProps.about !== this.props.about) {
@@ -36,16 +36,22 @@ class CompanyDescription extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="description">
         {this.state.abridged ? (
           <p>
             {this.state.shortSummary}
-            <a onClick={this.onClick}> Read More</a>
+            <a className="abridge" onClick={this.onClick}>
+              {" "}
+              Read More
+            </a>
           </p>
         ) : (
           <p>
             {this.state.summary}
-            <a onClick={this.onClick}> Read Less</a>
+            <a className="abridge" onClick={this.onClick}>
+              {" "}
+              Read Less
+            </a>
           </p>
         )}
       </div>

@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
-const config = require('../env.config.js');
+const mongoose = require("mongoose");
+const config = require("../env.config.js");
 
 mongoose.connect(
-  `${config.DATABASE_URL}:${config.DATABASE_PORT}/${config.DATABASE_NAME}`,
+  //`${config.DATABASE_URL}:${config.DATABASE_PORT}/${config.DATABASE_NAME}`,
+  "mongodb://database/robinhood",
   {
     useUnifiedTopology: true,
     useNewUrlParser: true
@@ -10,23 +11,23 @@ mongoose.connect(
 );
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('db connected!');
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("db connected!");
 });
 
 const aboutSchema = mongoose.Schema({
   ticker: { type: String, unique: true, required: true },
   about: String,
   CEO: String,
-  open: Number,
-  high: Number,
-  low: Number,
+  open: String,
+  high: String,
+  low: String,
   marketCap: String,
-  yearHigh: Number,
+  yearHigh: String,
   employees: Number,
   priceEarnings: Number,
-  yearLow: Number,
+  yearLow: String,
   headquarters: String,
   dividendYield: Number,
   founded: Number,
@@ -34,7 +35,7 @@ const aboutSchema = mongoose.Schema({
   volume: String
 });
 
-const About = mongoose.model('About', aboutSchema);
+const About = mongoose.model("About", aboutSchema);
 
 // retrieves data about stock based on ticker
 const getAbout = (queryString, callback) => {
@@ -44,8 +45,8 @@ const getAbout = (queryString, callback) => {
       callback(null, result);
     })
     .catch(err => {
-      console.log('err:', err);
+      console.log("err:", err);
     });
 };
 
-module.exports = { About, getAbout };
+module.exports = { About, getAbout, mongoose };
