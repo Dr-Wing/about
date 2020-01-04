@@ -42,6 +42,7 @@ const createCollection = () => {
       about: faker.lorem.paragraph((sentence_count = 10)),
       CEO: faker.name.findName(),
       open: prices[2],
+      high: prices[3],
       low: prices[1],
       marketCap: nFormatter(
         faker.random.number({ min: 1000000000, max: 2500000000 })
