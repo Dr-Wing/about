@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const config = require("../env.config.js");
 
 mongoose.connect(
-  // `${config.DATABASE_URL}:${config.DATABASE_PORT}/${config.DATABASE_NAME}`,
-  "mongodb://172.17.0.2:27017/robinhood",
+  //`${config.DATABASE_URL}:${config.DATABASE_PORT}/${config.DATABASE_NAME}`,
+  "mongodb://database/robinhood",
   {
     useUnifiedTopology: true,
     useNewUrlParser: true
@@ -20,14 +20,14 @@ const aboutSchema = mongoose.Schema({
   ticker: { type: String, unique: true, required: true },
   about: String,
   CEO: String,
-  open: Number,
-  high: Number,
-  low: Number,
+  open: String,
+  high: String,
+  low: String,
   marketCap: String,
-  yearHigh: Number,
+  yearHigh: String,
   employees: Number,
   priceEarnings: Number,
-  yearLow: Number,
+  yearLow: String,
   headquarters: String,
   dividendYield: Number,
   founded: Number,

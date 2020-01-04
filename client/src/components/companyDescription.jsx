@@ -16,9 +16,9 @@ class CompanyDescription extends React.Component {
     let shortenedSummary = "";
     let sentenceArr = string.split(".");
     for (let i = 0; i < 6; i++) {
-      shortenedSummary += sentenceArr[i];
+      shortenedSummary += sentenceArr[i] += ".";
     }
-    return (shortenedSummary += ".");
+    return shortenedSummary;
   }
   componentDidUpdate(previousProps, previousState) {
     if (previousProps.about !== this.props.about) {

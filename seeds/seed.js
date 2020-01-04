@@ -2,6 +2,7 @@ const { tickers } = require("./tickerCreator.js");
 const { About, mongoose } = require("../database/index.js");
 const faker = require("faker");
 
+// formats numbers to be abbreviated with letter notation: '20M'
 const nFormatter = num => {
   if (num >= 1000000000) {
     return (num / 1000000000).toFixed(1).replace(/\.0$/, "") + "T";
@@ -15,30 +16,40 @@ const nFormatter = num => {
   return num;
 };
 
-const save = () => {
-  About.deleteMany({}, (err, result) => {
-    if (err) {
-      console.log("err clearing db:", err);
-    } else {
-      console.log("successfully cleared db");
-    }
+//returns array of prices for year low, low, open, high, and year high
+const createPrices = () => {
+  let priceArr = [];
+  priceArr.push(parseFloat((Math.random() * (100 - 1 + 1) + 1).toFixed(2)));
+  for (let i = 0; i < 4; i++) {
+    let newNum = parseFloat(priceArr[i] * 0.1);
+    newNum += priceArr[i];
+    priceArr.push(newNum);
+  }
+  priceArr = priceArr.map(num => {
+    num = num.toFixed(2);
+    return `$${num}`;
   });
-  let collectionArr = [];
+  return priceArr;
+};
+
+// cycle through ticker array and create data for each item
+const createCollection = () => {
+  let collArr = [];
   for (let i = 0; i < tickers.length; i++) {
-    let stock = new About({
+    let prices = createPrices();
+    const stock = new About({
       ticker: tickers[i],
       about: faker.lorem.paragraph((sentence_count = 10)),
       CEO: faker.name.findName(),
-      open: 0,
-      high: 0,
-      low: 0,
+      open: prices[2],
+      low: prices[1],
       marketCap: nFormatter(
         faker.random.number({ min: 1000000000, max: 2500000000 })
       ),
       employees: faker.random.number({ min: 5000, max: 200000 }),
       priceEarnings: (Math.random() * (100 - 1 + 1) + 1).toFixed(2),
-      yearHigh: 0,
-      yearLow: 0,
+      yearHigh: prices[4],
+      yearLow: prices[0],
       headquarters: `${faker.address.city()}, ${faker.address.state()}`,
       dividendYield: (Math.random() * (10 - 1 + 1) + 1).toFixed(2),
       founded: faker.random.number({ min: 1950, max: 2019 }),
@@ -47,16 +58,31 @@ const save = () => {
       ),
       volume: nFormatter(faker.random.number({ min: 10000000, max: 30000000 }))
     });
-    collectionArr.push(stock);
+    collArr.push(stock);
   }
-  About.insertMany(collectionArr)
-    .then(result => {
-      console.log("successfully stored in db");
-      mongoose.disconnect();
-    })
-    .catch(err => {
-      console.log("err:", err);
-    });
+  return collArr;
+};
+
+const save = async () => {
+  //clear db before run
+
+  await About.deleteMany({}, err => {
+    if (err) {
+      console.log("err clearing db before seeding: ", err);
+    } else {
+      console.log("db cleared before seeding");
+    }
+  });
+  const collection = await createCollection();
+  About.insertMany(collection, (err, item) => {
+    if (err) {
+      return console.log("err", err);
+    }
+    console.log("collection seeded");
+    mongoose.connection.close();
+    console.log("db closed!");
+    return;
+  });
 };
 
 module.exports = { save };
