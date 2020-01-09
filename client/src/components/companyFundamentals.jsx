@@ -53,7 +53,7 @@ class CompanyFundamentals extends React.Component {
 
   render() {
     return (
-      <table>
+      <table className="table">
         <thead></thead>
         <tbody className="table">
           {this.state.store ? (

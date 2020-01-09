@@ -50,7 +50,7 @@ class About extends React.Component {
 
   render() {
     return (
-      <div className="aboutDiv">
+      <div>
         <h1 className="banner">About {this.state.data.ticker}</h1>
         <div>
           <CompanyDescription about={this.state.data.about} />

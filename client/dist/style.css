@@ -1,8 +1,9 @@
-body {
+#about {
   /* background-color: #171718;
   color: #ffffff; */
-  height: 700px;
-  width: 440px;
+
+  height: 401px;
+  width: 676px;
   margin: 0px 0px 60px;
   font: "DIN pro";
 }
@@ -31,9 +32,9 @@ body {
 }
 
 .table {
-  /* height: 218px;
-  width: 700px;
-  padding: 18px 0px 0px; */
+  height: 218px;
+  width: 676px;
+  padding: 18px 0px 0px;
 }
 
 .banner {
