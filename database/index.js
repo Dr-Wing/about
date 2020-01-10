@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const config = require("../env.config.js");
 
 mongoose.connect(
-  //`${config.DATABASE_URL}:${config.DATABASE_PORT}/${config.DATABASE_NAME}`,
-  "mongodb://database/robinhood",
+  `${config.DATABASE_URL}:${config.DATABASE_PORT}/${config.DATABASE_NAME}`,
+  //"mongodb://database/robinhood",
   {
     useUnifiedTopology: true,
     useNewUrlParser: true
