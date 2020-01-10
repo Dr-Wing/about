@@ -24,7 +24,6 @@ class CompanyDescription extends React.Component {
     if (previousProps.about !== this.props.about) {
       let shortSummary = this.shortenAbout(this.props.about);
       this.setState({ summary: this.props.about, shortSummary: shortSummary });
-      console.log("state in About component", this.state);
     }
   }
 

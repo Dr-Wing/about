@@ -9,7 +9,6 @@ class CompanyFundamentals extends React.Component {
 
   componentDidUpdate(previousProps, previousState) {
     if (previousProps.data !== this.props.data) {
-      console.log("props in table", this.props.data);
       let innerArr = [];
       let outerArr = [];
       let props = this.props.data;
@@ -45,10 +44,8 @@ class CompanyFundamentals extends React.Component {
         }
       }
       store = outerArr;
-      console.log("store", store);
       this.setState({ store });
     }
-    console.log("state in table component", this.state);
   }
 
   render() {

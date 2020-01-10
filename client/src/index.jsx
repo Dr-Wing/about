@@ -30,22 +30,39 @@ class About extends React.Component {
   }
 
   componentDidMount() {
-    // https://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
     const ticker = this.state.data.ticker;
-    fetch(
-      // `${config.SERVICE_API_URL}:${config.SERVICE_API_PORT}/about/${ticker}`,
-      `/about/ABCD`,
-      {
-        method: "GET"
-      }
-    )
+    fetch(`/about/ABCD`, {
+      method: "GET"
+    })
       .then(result => {
         return result.json();
       })
       .then(data => {
-        console.log("result from get request:", data);
-        this.setState({ data });
+        fetch(
+          "http://ec2-34-238-120-158.compute-1.amazonaws.com:4444/price/ABCD"
+        )
+          .then(result => {
+            return result.json();
+          })
+          .then(result => {
+            let obj = this.getValues(result);
+            data = Object.assign(data, obj);
+            this.setState({ data });
+          });
       });
+  }
+
+  getValues(data) {
+    let stateObj = {};
+    const open = data.prices[0].open;
+    stateObj = {
+      high: `$${(open + open * 0.1).toFixed(2)}`,
+      low: `$${(open - open * 0.1).toFixed(2)}`,
+      open: `$${open}`,
+      yearHigh: `$${(open + open * 0.2).toFixed(2)}`,
+      yearLow: `$${(open - open * 0.2).toFixed(2)}`
+    };
+    return stateObj;
   }
 
   render() {
