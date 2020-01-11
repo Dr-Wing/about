@@ -32,7 +32,8 @@ class About extends React.Component {
   componentDidMount() {
     const ticker = this.state.data.ticker;
     fetch(
-      `http://ec2-54-183-218-240.us-west-1.compute.amazonaws.com:3333/about/ABCD`,
+      `http://ec2-54-215-175-243.us-west-1.compute.amazonaws.com:3333/about/ABCD`,
+      "/about/ABCD",
       {
         method: "GET"
       }
@@ -41,9 +42,7 @@ class About extends React.Component {
         return result.json();
       })
       .then(data => {
-        fetch(
-          "http://ec2-34-238-120-158.compute-1.amazonaws.com:4444/price/ABCD"
-        )
+        fetch("http://ec2-54-88-251-88.compute-1.amazonaws.com:4444/price/ABCD")
           .then(result => {
             return result.json();
           })
@@ -71,7 +70,7 @@ class About extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="banner">About {this.state.data.ticker}</h1>
+        <h1 className="banner">About</h1>
         <div>
           <CompanyDescription about={this.state.data.about} />
         </div>
