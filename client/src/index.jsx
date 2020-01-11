@@ -38,6 +38,10 @@ class About extends React.Component {
         return result.json();
       })
       .then(data => {
+        this.setState({ data });
+        return data;
+      })
+      .then(data => {
         fetch(
           "http://ec2-34-238-120-158.compute-1.amazonaws.com:4444/price/ABCD"
         )
