@@ -31,20 +31,14 @@ class About extends React.Component {
 
   componentDidMount() {
     const ticker = this.state.data.ticker;
-    fetch(`/about/ABCD`, {
-      method: "GET"
-    })
+    fetch(
+      "http://ec2-54-215-175-243.us-west-1.compute.amazonaws.com:3333/about/ABCD"
+    )
       .then(result => {
         return result.json();
       })
       .then(data => {
-        this.setState({ data });
-        return data;
-      })
-      .then(data => {
-        fetch(
-          "http://ec2-34-238-120-158.compute-1.amazonaws.com:4444/price/ABCD"
-        )
+        fetch("http://ec2-54-88-251-88.compute-1.amazonaws.com:4444/price/ABCD")
           .then(result => {
             return result.json();
           })
