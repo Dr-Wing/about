@@ -33,7 +33,7 @@ class About extends React.Component {
     const ticker = this.state.data.ticker;
     fetch(
       `http://ec2-54-215-175-243.us-west-1.compute.amazonaws.com:3333/about/ABCD`,
-      "/about/ABCD",
+      //"/about/ABCD",
       {
         method: "GET"
       }
